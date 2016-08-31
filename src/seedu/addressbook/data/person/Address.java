@@ -27,6 +27,46 @@ public class Address {
         }
         this.value = address;
     }
+    
+    public void addressSplit(String address) {
+    	int startPosition = 0;
+    	Block block = new Block();
+    	Street street = new Street();
+    	Unit unit = new Unit();
+    	PostalCode postalCode = new PostalCode();
+    	
+    	for (int i=0; i<address.length(); i++) {
+    		if (address.charAt(i) == ',') {
+    			block.setBlock(address.substring(startPosition, i));
+    			startPosition = i + 2; // To eat the white space
+    			break;
+    		}
+    	}
+    	
+    	for (int i=startPosition; i<address.length(); i++) {
+    		if (address.charAt(i) == ',') { 
+    			street.setStreet(address.substring(startPosition, i));
+    			startPosition = i + 2;
+    			break;
+    		}
+    	}
+    	
+    	for (int i=startPosition; i<address.length(); i++) {
+    		if (address.charAt(i) == ',') { 
+    			unit.setUnit(address.substring(startPosition, i));
+    			startPosition = i + 2;
+    			break;
+    		}
+    	}
+    	
+    	for (int i=startPosition; i<address.length(); i++) {
+    		if (address.charAt(i) == ',') { 
+    			postalCode.setPostalCode(address.substring(startPosition, i));
+    			startPosition = i + 2;
+    			break;
+    		}
+    	}
+    }
 
     /**
      * Returns true if a given string is a valid person email.

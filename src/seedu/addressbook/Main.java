@@ -124,6 +124,13 @@ public class Main {
         boolean isStorageFileSpecifiedByUser = launchArgs.length > 0;
         return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();
     }
+    
+    private void isStorageDeleted(StorageFile initializeStorage) throws StorageFileDeletedException {
+    	if (initializeStorage.getPath().equals(null)) {
+    		System.out.println("The storage file has been deleted.");
+    	}
+    }
+    
 
 
 }

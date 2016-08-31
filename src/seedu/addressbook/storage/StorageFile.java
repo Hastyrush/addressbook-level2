@@ -42,6 +42,12 @@ public class StorageFile {
             super(message);
         }
     }
+    
+    public static class StorageFileDeletedException extends Exception {
+    	public StorageFileDeletedException(String message) {
+    		super(message);
+    	}
+    }
 
     private final JAXBContext jaxbContext;
 
